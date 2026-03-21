@@ -1,48 +1,104 @@
-# \# Proyecto Laravel - Catálogo con Carrito de Compras
+\# Proyecto en Laravel - Catálogo con Carrito y Autenticación
 
-# 
 
-# \## Autor
 
-# America Sofia Santillan Medina
+\## America Sofia Santillan Medina
 
-# 
 
-# \## Descripción
 
-# Sitio web desarrollado con Laravel que consume la Fake Store API para mostrar un catálogo de productos y permite gestionar un carrito de compras mediante sesiones del navegador.
+\## Descripción
 
-# 
+Sitio web desarrollado con Laravel que incluye catálogo de productos, carrito de compras y autenticación de usuarios.
 
-# \## Tecnologías utilizadas
 
-# \- Laravel 10
 
-# \- Tailwind CSS
+\## Características
 
-# \- Fake Store API
 
-# 
 
-# \## Características del proyecto
+\### Públicas (sin iniciar sesión)
 
-# \- Catálogo de productos desde API externa
+\- Ver catálogo de productos
 
-# \- Detalle de producto con 3 imágenes
+\- Ver detalle de producto con 3 imágenes
 
-# \- Carrito de compras con sesiones (sin base de datos)
+\- Agregar productos al carrito
 
-# \- Agregar productos desde catálogo o detalle
+\- Actualizar cantidades en carrito
 
-# \- Actualizar cantidades en el carrito
+\- Eliminar productos del carrito
 
-# \- Eliminar productos del carrito
+\- Vaciar carrito
 
-# \- Vaciar carrito completo
 
-# \- Contador en ícono del carrito
 
-# \- Diseño responsive
+\### Privadas (requieren iniciar sesión)
 
-# 
+\- Registro de usuarios
+
+\- Inicio de sesión
+
+\- Ver perfil personal
+
+\- Editar datos personales
+
+\- Actualizar imagen de perfil
+
+\- Cambiar contraseña
+
+\- Cerrar sesión
+
+
+
+\## Tecnologías usadas
+
+\- Laravel 10
+
+\- Tailwind CSS
+
+\- Fake Store API (productos)
+
+\- Platzi API (autenticación)
+
+
+
+\## API usadas
+
+
+
+\### Productos (pública)
+
+\- URL: https://fakestoreapi.com
+
+\- GET /products - Lista productos
+
+\- GET /products/{id} - Detalle producto
+
+
+
+\### Autenticación (cual requiere token)
+
+\- URL: https://api.escuelajs.co/api/v1
+
+\- POST /users - Registrar usuario
+
+\- POST /auth/login - Iniciar sesión
+
+\- GET /auth/profile - Ver perfil
+
+\- PUT /users/{id} - Actualizar usuario
+
+
+
+\## Carrito de compras
+
+El carrito se guarda en la sesión del navegador. No usa base de datos.
+
+
+
+\## Autenticación
+
+El token se guarda en la sesión al iniciar sesión. Las operaciones de perfil requieren este token.
+
+
 
