@@ -1,5 +1,5 @@
 <?php
-
+// foking sofia
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -9,16 +9,13 @@ class ProductoController extends Controller
 {
     public function index()
     {
-        // Consumir la API de Fake Store
         $response = Http::get('https://fakestoreapi.com/products');
         
-        // Verificar si la petición fue exitosa
         if ($response->successful()) {
             $productos = $response->json();
             return view('catalogo', compact('productos'));
         }
         
-        // Si hay error, mostrar mensaje
         return view('catalogo', ['error' => 'No se pudieron cargar los productos']);
     }
 

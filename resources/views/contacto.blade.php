@@ -35,7 +35,6 @@
                 </div>
             </div>
             
-            <!-- Formulario para relleno -->
             <div>
                 <h2 class="text-xl font-semibold mb-4">Envíanos un mensaje</h2>
                 <form class="space-y-4">

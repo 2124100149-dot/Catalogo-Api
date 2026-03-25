@@ -1,104 +1,39 @@
-\# Proyecto en Laravel - Cat醠ogo con Carrito y Autenticaci髇
-
-
-
-\## America Sofia Santillan Medina
-
-
-
-\## Descripci髇
-
-Sitio web desarrollado con Laravel que incluye cat醠ogo de productos, carrito de compras y autenticaci髇 de usuarios.
-
-
-
-\## Caracter韘ticas
-
-
-
-\### P鷅licas (sin iniciar sesi髇)
-
-\- Ver cat醠ogo de productos
-
-\- Ver detalle de producto con 3 im醙enes
-
-\- Agregar productos al carrito
-
-\- Actualizar cantidades en carrito
-
-\- Eliminar productos del carrito
-
-\- Vaciar carrito
-
-
-
-\### Privadas (requieren iniciar sesi髇)
-
-\- Registro de usuarios
-
-\- Inicio de sesi髇
-
-\- Ver perfil personal
-
-\- Editar datos personales
-
-\- Actualizar imagen de perfil
-
-\- Cambiar contrase馻
-
-\- Cerrar sesi髇
-
-
-
-\## Tecnolog韆s usadas
-
-\- Laravel 10
-
-\- Tailwind CSS
-
-\- Fake Store API (productos)
-
-\- Platzi API (autenticaci髇)
-
-
-
-\## API usadas
-
-
-
-\### Productos (p鷅lica)
-
-\- URL: https://fakestoreapi.com
-
-\- GET /products - Lista productos
-
-\- GET /products/{id} - Detalle producto
-
-
-
-\### Autenticaci髇 (cual requiere token)
-
-\- URL: https://api.escuelajs.co/api/v1
-
-\- POST /users - Registrar usuario
-
-\- POST /auth/login - Iniciar sesi髇
-
-\- GET /auth/profile - Ver perfil
-
-\- PUT /users/{id} - Actualizar usuario
-
-
-
-\## Carrito de compras
-
-El carrito se guarda en la sesi髇 del navegador. No usa base de datos.
-
-
-
-\## Autenticaci髇
-
-El token se guarda en la sesi髇 al iniciar sesi髇. Las operaciones de perfil requieren este token.
-
-
-
+# Proyecto Laravel - Cat谩logo con Carrito, Autenticaci贸n y Pedidos
+
+## America Sofia Santillan Medina
+
+## Descripci贸n
+Sitio web desarrollado con Laravel que incluye:
+- Cat谩logo de productos desde Fake Store API
+- Carrito de compras con sesiones
+- Autenticaci贸n de usuarios con tokens
+- Gesti贸n de pedidos por usuario
+
+## Caracter铆sticas
+
+### P煤blicas (sin autenticaci贸n)
+- Ver cat谩logo de productos
+- Ver detalle de producto con 3 im谩genes
+- Agregar productos al carrito
+- Actualizar cantidades en carrito
+- Eliminar productos del carrito
+- Vaciar carrito
+
+### Privadas (requieren autenticaci贸n)
+- Registro de usuarios
+- Inicio de sesi贸n
+- Ver perfil personal
+- Editar datos personales
+- Actualizar imagen de perfil
+- Cambiar contrase帽a
+- Cerrar sesi贸n
+- **Crear pedido a partir del carrito**
+- **Listar todos los pedidos**
+- **Ver detalle de un pedido**
+- **Cancelar pedido (si est谩 pendiente)**
+
+## Tecnolog铆as usadas
+- Laravel 10
+- Tailwind CSS
+- Fake Store API (productos)
+- Platzi API (autenticaci贸n)
