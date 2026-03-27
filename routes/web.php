@@ -6,6 +6,7 @@ use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\PagoController;
 
 // Páginas estáticas
 Route::get('/', function () {
@@ -20,11 +21,11 @@ Route::get('/contacto', function () {
     return view('contacto');
 })->name('contacto');
 
-// Rutas del catálogo 
+// Rutas del catálogo (públicas)
 Route::get('/catalogo', [ProductoController::class, 'index'])->name('catalogo');
 Route::get('/producto/{id}', [ProductoController::class, 'show'])->name('producto.detalle');
 
-// Rutas del carrito 
+// Rutas del carrito (públicas)
 Route::get('/carrito', [CarritoController::class, 'index'])->name('carrito');
 Route::post('/carrito/agregar', [CarritoController::class, 'agregar'])->name('carrito.agregar');
 Route::put('/carrito/{id}', [CarritoController::class, 'actualizar'])->name('carrito.actualizar');
@@ -49,3 +50,8 @@ Route::get('/pedidos', [PedidoController::class, 'index'])->name('pedidos.index'
 Route::post('/pedidos', [PedidoController::class, 'store'])->name('pedidos.store');
 Route::get('/pedidos/{id}', [PedidoController::class, 'show'])->name('pedidos.show');
 Route::put('/pedidos/{id}/cancelar', [PedidoController::class, 'cancel'])->name('pedidos.cancel');
+
+// Rutas de pagos (requieren autenticación)
+Route::get('/pagar/{pedidoId}', [PagoController::class, 'show'])->name('pagos.show');
+Route::post('/pagar/{pedidoId}', [PagoController::class, 'procesar'])->name('pagos.procesar');
+Route::post('/paypal-webhook', [PagoController::class, 'webhook'])->name('paypal.webhook');

@@ -1,4 +1,4 @@
-# Proyecto Laravel - Catálogo con Carrito, Autenticación y Pedidos
+# Proyecto Laravel - Catálogo con Carrito, Autenticación, Pedidos y Pasarela de Pago
 
 ## America Sofia Santillan Medina
 

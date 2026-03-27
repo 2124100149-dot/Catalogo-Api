@@ -45,17 +45,17 @@
                                 </p>
                             </div>
                             <div>
-                                @if($pedido['estado'] == 'pendiente')
+                                @if($pedido['estado'] == 'pendiente_pago')
                                     <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-semibold">
-                                        Pendiente
+                                        ⏳ Pendiente de Pago
+                                    </span>
+                                @elseif($pedido['estado'] == 'pagado')
+                                    <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-semibold">
+                                        ✅ Pagado
                                     </span>
                                 @elseif($pedido['estado'] == 'cancelado')
                                     <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-semibold">
-                                        Cancelado
-                                    </span>
-                                @elseif($pedido['estado'] == 'completado')
-                                    <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-semibold">
-                                        Completado
+                                        ❌ Cancelado
                                     </span>
                                 @endif
                             </div>
@@ -70,6 +70,11 @@
                                 <p class="text-sm text-gray-500 mt-1">
                                     {{ count($pedido['productos']) }} producto(s)
                                 </p>
+                                @if(isset($pedido['transaction_id']) && $pedido['transaction_id'])
+                                    <p class="text-xs text-gray-400 mt-1">
+                                        Transacción: {{ substr($pedido['transaction_id'], 0, 20) }}...
+                                    </p>
+                                @endif
                             </div>
                             <a href="{{ route('pedidos.show', $pedido['id']) }}" 
                                class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">

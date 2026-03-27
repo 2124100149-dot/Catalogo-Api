@@ -19,15 +19,15 @@
     <div class="grid md:grid-cols-3 gap-6 mt-12">
         <div class="bg-white rounded-lg shadow p-6">
             <h3 class="text-xl font-semibold mb-2">Productos de Calidad</h3>
-            <p class="text-gray-600">Ofrecemos los mejores productos del mercado, para que te los lleves directamente a casa</p>
+            <p class="text-gray-600">Ofrecemos los mejores productos del mercado, para que te los lleves directamente a casa.</p>
         </div>
         <div class="bg-white rounded-lg shadow p-6">
             <h3 class="text-xl font-semibold mb-2">Envío Rápido</h3>
-            <p class="text-gray-600">Recibe tus productos en la puerta de tu casa y no camines por ellos</p>
+            <p class="text-gray-600">Recibe tus productos en la puerta de tu casa y no camines por ellos.</p>
         </div>
         <div class="bg-white rounded-lg shadow p-6">
             <h3 class="text-xl font-semibold mb-2">Mejores Precios</h3>
-            <p class="text-gray-600">Los precios más competitivos del mercado, compralo ya</p>
+            <p class="text-gray-600">Los precios más competitivos del mercado, compralo ya.</p>
         </div>
     </div>
 </div>

@@ -42,24 +42,47 @@
                     
                     <div>
                         <p class="text-sm text-gray-500">Estado</p>
-                        @if($pedido['estado'] == 'pendiente')
+                        @if($pedido['estado'] == 'pendiente_pago')
                             <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-semibold inline-block">
-                                Pendiente
+                                 Pendiente de Pago
+                            </span>
+                        @elseif($pedido['estado'] == 'pagado')
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-semibold inline-block">
+                                 Pagado
                             </span>
                         @elseif($pedido['estado'] == 'cancelado')
                             <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-semibold inline-block">
-                                Cancelado
+                                 Cancelado
                             </span>
                         @endif
                     </div>
+                    
+                    @if(isset($pedido['transaction_id']) && $pedido['transaction_id'])
+                        <div>
+                            <p class="text-sm text-gray-500">Número de Transacción</p>
+                            <p class="font-mono text-sm bg-gray-100 p-2 rounded break-all">{{ $pedido['transaction_id'] }}</p>
+                        </div>
+                    @endif
+                    
+                    @if(isset($pedido['fecha_pago']) && $pedido['fecha_pago'])
+                        <div>
+                            <p class="text-sm text-gray-500">Fecha de Pago</p>
+                            <p class="font-medium">{{ $pedido['fecha_pago'] }}</p>
+                        </div>
+                    @endif
                     
                     <div>
                         <p class="text-sm text-gray-500">Total</p>
                         <p class="text-2xl font-bold text-blue-600">${{ number_format($pedido['total'], 2) }}</p>
                     </div>
                     
-                    @if($pedido['estado'] == 'pendiente')
-                        <div class="pt-4">
+                    @if($pedido['estado'] == 'pendiente_pago')
+                        <div class="pt-4 space-y-2">
+                            <a href="{{ route('pagos.show', $pedido['id']) }}" 
+                               class="block w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition text-center">
+                                 Pagar Ahora
+                            </a>
+                            
                             <form action="{{ route('pedidos.cancel', $pedido['id']) }}" method="POST">
                                 @csrf
                                 @method('PUT')
@@ -81,7 +104,7 @@
                 
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
-                        <tr>
+                        32
                             <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Producto</th>
                             <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Precio</th>
                             <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Cantidad</th>
@@ -92,9 +115,7 @@
                         @foreach($pedido['productos'] as $producto)
                             <tr>
                                 <td class="px-4 py-4">
-                                    <div class="flex items-center">
-                                        <span class="text-sm text-gray-900">{{ $producto['nombre'] }}</span>
-                                    </div>
+                                    <span class="text-sm text-gray-900">{{ $producto['nombre'] }}</span>
                                 </td>
                                 <td class="px-4 py-4 text-sm text-gray-900">
                                     ${{ number_format($producto['precio'], 2) }}

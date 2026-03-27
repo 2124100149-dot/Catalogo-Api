@@ -14,12 +14,6 @@ class PedidoController extends Controller
             return redirect()->route('login')->with('error', 'Debes iniciar sesión');
         }
 
-        $token = Session::get('auth_token');
-        
-        // Obtener pedidos del usuario desde la API
-        //  La API de Platzi no tiene endpoint de pedidos por defecto
-        // Vamos a usar sesión para almacenar pedidos temporalmente
-        
         $pedidos = Session::get('pedidos', []);
         
         return view('pedidos.index', compact('pedidos'));
@@ -37,7 +31,6 @@ class PedidoController extends Controller
             return redirect()->route('carrito')->with('error', 'El carrito está vacío');
         }
 
-        $token = Session::get('auth_token');
         $usuario = Session::get('user_data');
         
         $total = 0;
@@ -60,13 +53,13 @@ class PedidoController extends Controller
             'cliente_id' => $usuario['id'],
             'cliente_nombre' => $usuario['name'],
             'fecha' => date('Y-m-d H:i:s'),
-            'estado' => 'pendiente',
+            'estado' => 'pendiente_pago',
             'total' => $total,
-            'productos' => $productosPedido
+            'productos' => $productosPedido,
         ];
         
         $pedidos = Session::get('pedidos', []);
-        array_unshift($pedidos, $pedido); 
+        array_unshift($pedidos, $pedido);
         Session::put('pedidos', $pedidos);
         
         Session::forget('carrito');
@@ -112,8 +105,8 @@ class PedidoController extends Controller
                     return back()->with('error', 'Este pedido ya está cancelado');
                 }
                 
-                if ($pedido['estado'] == 'completado') {
-                    return back()->with('error', 'No se puede cancelar un pedido completado');
+                if ($pedido['estado'] == 'pagado') {
+                    return back()->with('error', 'No se puede cancelar un pedido ya pagado');
                 }
                 
                 $pedidos[$key]['estado'] = 'cancelado';
